@@ -10,7 +10,7 @@ def start_game():
     config = {'allow_public_attrs': True}
     cm = rpyc.connect('localhost', 8080, config=config)
 
-    while True:
+    while cm.root.jogadas_restantes() > 0:
         tabuleiro = cm.root.get_tabuleiro()
         print(tabuleiro)
 
@@ -26,7 +26,9 @@ def start_game():
                 print("Você acertou uma bomba ! \n")
                 cm.root.get_tabuleiro()
         else:
-            print("Jogada inválida !")        
+            print("Jogada inválida !") 
+
+    print("VOCÊ VENCEU !! YHUL")               
         
 def client():
     while True:
