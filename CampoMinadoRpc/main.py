@@ -15,9 +15,9 @@ def iniciar_server():
             server()
         elif int(opcao) == 2:
             print("Cliente ativado:\n")
-            testConection()
+            client()
     except:
         for val in sys.exc_info():
             print(val)
 
-    input()
+input()
