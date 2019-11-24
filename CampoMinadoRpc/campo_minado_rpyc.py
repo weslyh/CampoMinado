@@ -8,7 +8,6 @@ class CampoMinadoRpyc(rpyc.Service):
     def __init__(self, linha = 5, coluna = 5):
         self.__linha = int(linha)
         self.__coluna = int(coluna)
-        self.jogadas_restantes = self.__calcular_total_jogadas(linha, coluna)
         self.__tabuleiro = self.__inicializar_tabuleiro(linha, coluna)
         self.__coordenadas_bombas = self.__distribuir_bombas(linha,coluna)
         self.__coordenada_valida = True
@@ -38,7 +37,6 @@ class CampoMinadoRpyc(rpyc.Service):
             self.__game_over = True
 
         self.__tabuleiro[linha][coluna] = str(self.__conta_bombas_vizinhos(linha, coluna))
-        self.jogadas_restantes -=1
         self.__jogada_segura = True
 
     def exposed_imprimir_tabuleiro(self):
@@ -58,9 +56,6 @@ class CampoMinadoRpyc(rpyc.Service):
 
     def __total_bombas(self):
         return int((self.__linha*self.__coluna)/3)
-    
-    def __calcular_total_jogadas(self,linha, coluna):
-        return (linha*coluna) - self.__total_bombas()
 
     def __validar_coordenadas(self, linha, coluna):
         if linha in range(0, self.__linha) and coluna in range(0, self.__coluna):
