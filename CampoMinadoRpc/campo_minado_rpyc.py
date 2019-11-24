@@ -5,7 +5,7 @@ from rpyc.utils.server import ThreadedServer
 
 class CampoMinadoRpyc(rpyc.Service):
 
-    def __init__(self):
+    def exposed_funfou(self):
         print("test")
 
 def server():
