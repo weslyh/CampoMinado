@@ -11,8 +11,7 @@ def start_game():
     cm = rpyc.connect('localhost', 8080, config=config)
 
     while cm.root.jogadas_restantes() > 0:
-        tabuleiro = cm.root.get_tabuleiro()
-        print(tabuleiro)
+        print(cm.root.get_tabuleiro())
 
         print('\nFaça sua jogada: \n')
         linha = input('Escolha a linha:')
@@ -21,10 +20,10 @@ def start_game():
 
         if cm.root.get_coordenada_valida():
             if cm.root.get_jogada_segura():
-                cm.root.get_tabuleiro()
+                print(cm.root.get_tabuleiro())
             elif cm.root.get_game_over():
                 print("Você acertou uma bomba ! \n")
-                cm.root.get_tabuleiro()
+                print(cm.root.get_tabuleiro())
         else:
             print("Jogada inválida !") 
 
