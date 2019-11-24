@@ -1,6 +1,6 @@
 import sys
 from campo_minado_rpyc import server
-from campo_minado_client import testConection
+from campo_minado_client import client
 
 print("Você quer executar:")
 print("1 para servidor")
